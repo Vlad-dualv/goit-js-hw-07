@@ -29,7 +29,7 @@ const images = [
 ];
 
 const galleryList = document.querySelector(".gallery");
-const allImages = document.querySelectorAll("img");
+const fragment = document.createDocumentFragment();
 
 images.forEach(image => {
   const listItem = document.createElement("li");
@@ -37,16 +37,10 @@ images.forEach(image => {
   const imageItem = document.createElement("img");
   imageItem.src = image.url;
   imageItem.alt = image.alt;
-  imageItem.style.width = "360px";
-  imageItem.style.height = "300px";
   imageItem.className = "photo";
-  galleryList.append(listItem);
-  listItem.appendChild(imageItem);
-  galleryList.appendChild(listItem);
+  listItem.append(imageItem);
+  fragment.appendChild(listItem);
 });
 
-galleryList.style.display = "flex";
-galleryList.style.gap = "24px";
-galleryList.style.flexWrap = "wrap";
+galleryList.appendChild(fragment);
 
-imageItem.style.display = "block"
